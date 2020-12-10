@@ -155,7 +155,7 @@ Name Tag |  Route Configuration
   <img src="blob/lab-1-pic-9.PNG">
 </p>
 
-2) **Optional** Tag route table with a **name: 3-tier-pub-rt**\ 
+2) **Optional** Tag route table with a **name: 3-tier-pub-rt** \
 3) Select **VPC:** <3-tier-vpc>\
 4) Click on **Create**\
 5) Create route table for **public subnet**
@@ -173,7 +173,7 @@ Name Tag |  Route Configuration
 </p>
 
 7) Click **Add route**\
-8) Set **Destination** to **0.0.0.0/0**, **Target: Internet Gateway**\ 
+8) Set **Destination** to **0.0.0.0/0**, **Target: Internet Gateway** \
 9) Click **Save routes** 
 
 <p align=center>
@@ -186,7 +186,7 @@ Name Tag |  Route Configuration
   <img src="blob/lab-1-pic-19.PNG">
 </p>
 
-11) Select both the **public subnets**
+11) Select both the **public subnets** \
 12) Click **Save**
 
 <p align=center>

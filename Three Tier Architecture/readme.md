@@ -2,7 +2,7 @@
 sort: 1
 ---
 
-# 1. Three-Tier Infrastructure Setup
+# Three-Tier Infrastructure Setup
 In this lab, learn to setup a highly redundant three-tier web application cloud infrastructure.
 
 

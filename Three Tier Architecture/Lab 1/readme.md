@@ -67,10 +67,10 @@ public-subnet-2 | 10.0.3.0/24 | ap-southeast-1b
   <img src="blob/lab-1-pic-4.PNG">
 </p>
 
-2) Tag Subnet with a **name: private-subnet-1**
-3) Select **VPC:** 3-tier-vpc
-4) Select **Availability Zone** ap-southeast-1a
-5) set **IPv4 CIDR block IP** to **10.0.0.0/24**
+2) Tag Subnet with a **name: private-subnet-1**\
+3) Select **VPC:** 3-tier-vpc\
+4) Select **Availability Zone** ap-southeast-1a\
+5) set **IPv4 CIDR block IP** to **10.0.0.0/24**\
 6) Click **Create**
 
 <p align=center>
@@ -113,7 +113,7 @@ Internet Gateway allows internet access to your VPC
   <img src="blob/lab-1-pic-12.PNG">
 </p>
 
-5) Select **Available VPC** to attach to 3-tier-vpc
+5) Select **Available VPC** to attach to 3-tier-vpc\
 6) Click on **Attach Internet Gateway**
 
 <p align=center>
@@ -133,9 +133,9 @@ but prevent the internet from initiating a connection with those instances
   <img src="blob/lab-1-pic-7.PNG">
 </p>
 
-2) **Optional** Tag NAT Gateway with a **name** 
-3) Select **subnet:** public-subnet-2. Selection can be either of the **Public** subnets
-4) Select an **existing Elastic IP** or click on **allocate Elastic IP**
+2) **Optional** Tag NAT Gateway with a **name** \
+3) Select **subnet:** public-subnet-2. Selection can be either of the **Public** subnets\
+4) Select an **existing Elastic IP** or click on **allocate Elastic IP**\
 5) Click **Create NAT gateway**
 
 <p align=center>
@@ -158,9 +158,9 @@ Name Tag |  Route Configuration
   <img src="blob/lab-1-pic-9.PNG">
 </p>
 
-2) **Optional** Tag route table with a **name: 3-tier-pub-rt** 
-3) Select **VPC:** <3-tier-vpc>
-4) Click on **Create**
+2) **Optional** Tag route table with a **name: 3-tier-pub-rt**\ 
+3) Select **VPC:** <3-tier-vpc>\
+4) Click on **Create**\
 5) Create route table for **public subnet**
 
 <p align=center>
@@ -175,8 +175,8 @@ Name Tag |  Route Configuration
   <img src="blob/lab-1-pic-16.PNG">
 </p>
 
-7) Click **Add route**
-8) Set **Destination** to **0.0.0.0/0**, **Target: Internet Gateway** 
+7) Click **Add route**\
+8) Set **Destination** to **0.0.0.0/0**, **Target: Internet Gateway**\ 
 9) Click **Save routes** 
 
 <p align=center>

@@ -76,11 +76,10 @@ on AWS.
   <img src="blob/lab-2-pic-5.PNG">
 </p>
 
-2) Set **Security Group Name:** Bastion-SecG
-3) Set **Description:** Allows SSH For Bastion Host
-4) Under **Inbound Rules**, Click **Add rule**
-5) Select **Type:** SSH, **Source:** Custom 0.0.0.0/0 
-- **Note: Best Practice, the source should be set as trusted IPs only.**
+2) Set **Security Group Name:** Bastion-SecG\
+3) Set **Description:** Allows SSH For Bastion Host\
+4) Under **Inbound Rules**, Click **Add rule**\
+5) Select **Type:** SSH, **Source:** Custom 0.0.0.0/0, **Note: Best Practice, the source should be set as trusted IPs only.**\
 6) Click **Create security group**
 
 <p align=center>
@@ -167,8 +166,8 @@ attached with this role to have permission to handle elastic IPs resource
   <img src="blob/lab-2-pic-13.PNG">
 </p>
 
-6) Set **Role name:** Bastion-ENI
-7) Set **Role description:** Allow EC2 Instances to access ENI resources
+6) Set **Role name:** Bastion-ENI\
+7) Set **Role description:** Allow EC2 Instances to access ENI resources\
 8) Click **Create role**
 
 <p align=center>
@@ -183,15 +182,15 @@ attached with this role to have permission to handle elastic IPs resource
   <img src="blob/lab-2-pic-31.PNG">
 </p>
 
-2) Set **Launch Template Name:** Bastion-Host-Recovery
-3) Select **AMI:** Amazon Linux 2 AMI
+2) Set **Launch Template Name:** Bastion-Host-Recovery\
+3) Select **AMI:** Amazon Linux 2 AMI\
 4) Select **Instance Type:** t2.micro
 
 <p align=center>
   <img src="blob/lab-2-pic-15.PNG">
 </p>
 
-5) Set **Key pair:** bastion-keys (Previously Created)
+5) Set **Key pair:** bastion-keys (Previously Created)\
 6) Set **Security Groups** Bastion-SecG (Previously Created)
 
 <p align=center>
@@ -234,30 +233,30 @@ aws ec2 associate-address --instance-id $INSTANCE_ID --allocation-id <Your Elast
   <img src="blob/lab-2-pic-19.PNG">
 </p>
 
-2) Set **Auto Scaling Group name:** Bastion-Host-Recovery
-3) Select **Launch Template:** Bastion-Host-Recovery
+2) Set **Auto Scaling Group name:** Bastion-Host-Recovery\
+3) Select **Launch Template:** Bastion-Host-Recovery\
 4) Click **Next**
  
 <p align=center>
   <img src="blob/lab-2-pic-20.PNG">
 </p>
  
-5) Select **VPC:** 3-tier-vpc
-6) Select **Subnets:** public-subnet-1 & public-subnet-2
+5) Select **VPC:** 3-tier-vpc\
+6) Select **Subnets:** public-subnet-1 & public-subnet-2\
 7) Click **Next**
 
 <p align=center>
   <img src="blob/lab-2-pic-21.PNG">
 </p>
 
-8) Leave Options Default
+8) Leave Options Default\
 9) Click **Next**
 
 <p align=center>
   <img src="blob/lab-2-pic-22.PNG">
 </p>
 
-10) Leave Options Default
+10) Leave Options Default\
 11) Click **Next**
 
 **Note: Setting 1/1/1 capacity will ensure there is at least one bastion host up at a time**
@@ -266,14 +265,14 @@ aws ec2 associate-address --instance-id $INSTANCE_ID --allocation-id <Your Elast
   <img src="blob/lab-2-pic-23.PNG">
 </p>
 
-12) Leave Options Default
+12) Leave Options Default\
 13) Click **Next**
 
 <p align=center>
   <img src="blob/lab-2-pic-24.PNG">
 </p>
 
-14) **Optional** to add **Tag:** Bastion-ASG
+14) **Optional** to add **Tag:** Bastion-ASG\
 15) Click **Next**
 
 <p align=center>

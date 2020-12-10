@@ -1,6 +1,6 @@
-title: Your awesome title
+title: AWS Documentation Repository
 lang: en
-description: Write an awesome description for your new site here
+description: A Repository for AWS POCs and Labs
 
 ## local method ##
 # theme: jekyll-rtd-theme

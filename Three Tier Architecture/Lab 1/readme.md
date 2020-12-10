@@ -22,13 +22,10 @@ In this lab, we will configure a VPC network hosting public and private subnet o
 
 ## VPC Configuration
 
-1) In **VPC** service page, navigate to **Your VPCs** page and click on **Create VPC**
-2) Tag VPC resource with a **name** 3-tier-vpc
-3) set **IPv4 CIDR block IP** to **10.0.0.0/16**
-4) **Extra Options:**
-- **IPv6 CIDR block:** For assignment of IPv6 Network Address
-- **Tenancy:** Dedicated tenancy ensures all EC2 instances that are launched in a VPC run on hardware that's dedicated to a single customer 
-5) Click **Create VPC** 
+1) In **VPC** service page, navigate to **Your VPCs** page and click on **Create VPC**\
+2) Tag VPC resource with a **name** 3-tier-vpc\
+3) set **IPv4 CIDR block IP** to **10.0.0.0/16**\
+4) Click **Create VPC** 
 
 <p align=center>
   <img src="blob/lab-1-pic-1.PNG">
@@ -37,17 +34,17 @@ In this lab, we will configure a VPC network hosting public and private subnet o
 ### DNS Hostname assignment
 By enabling **DNS Hostnames**, EC2 Instances created with public IP within this VPC will automatically be assigned a hostname.
 
-6) Right click the created VPC, Click on **Edit DNS Hostnames**
+5) Right click the created VPC, Click on **Edit DNS Hostnames**
 <p align=center>
   <img src="blob/lab-1-pic-2.PNG">
 </p>
 
-7) Click **Enable** Checkbox and save the changes.
+6) Click **Enable** Checkbox and save the changes.
 <p align=center>
   <img src="blob/lab-1-pic-3.PNG">
 </p>
 
-8) **Enable DNS Hostname assignment for both PUBLIC subnets**
+7) **Enable DNS Hostname assignment for both PUBLIC subnets**
 
 ## Subnet Configuration
 

@@ -57,8 +57,8 @@ A key pair, consisting of a private key and a public key, is a set of security c
   <img src="blob/lab-2-pic-4.PNG">
 </p>
 
-2) Tag VPC resource with a **name:** bastion-keys
-3) Select **ppk** file format 
+2) Tag VPC resource with a **name:** bastion-keys\
+3) Select **ppk** file format \
 4) Click **Create Key Pair**
 
 <p align=center>

@@ -24,8 +24,8 @@ Configure CLI using Access Key to access your AWS account through the web. By us
   <img src="blob/aws-cli-pic1.PNG">
 </p>
 
-To Acquire Access Key ID & Secret Access key: \ 
-IAM > Users > Select User > Security Credentials > Create Access Key
+To Acquire Access Key ID & Secret Access key:
+- IAM > Users > Select User > Security Credentials > Create Access Key
 
 To configure AWS CLI to connect to your account, in your CLI:
 

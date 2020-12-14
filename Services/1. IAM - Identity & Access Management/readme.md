@@ -13,8 +13,8 @@ Simulator Tool : [Link](https://policysim.aws.amazon.com/home/index.jsp?#)
 ### Allow Full Access to View/Edit Billing Page:
 
 For allowing an IAM Entity to have access to billing page (Read/Write)\
-Apart from this, Remember to activate IAM User and role access to console:\
-My account -> IAM User and Role Access to Billing Information -> Activate IAM Access 
+Apart from this, Remember to activate IAM User and role access to console:
+- My account -> IAM User and Role Access to Billing Information -> Activate IAM Access 
 
 Service Type: Billing (aws-portal)
 

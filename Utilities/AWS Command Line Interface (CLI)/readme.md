@@ -34,7 +34,7 @@ To configure AWS CLI to connect to your account, in your CLI:
 3) Verify configuration with ls ~/.aws, you should see "config" and "credentials"
 
 ## AWS CLI Commands Reference
-Reference Site: https://docs.aws.amazon.com/cli/latest/index.html
+Reference Site: [Link](https://docs.aws.amazon.com/cli/latest/index.html)
 
 #### Dry Run
 Specify --dry-run in your command if you wish to test out a command without it really executing
@@ -43,4 +43,4 @@ Specify --dry-run in your command if you wish to test out a command without it r
 
 For determining what is preventing access, you can decode the authorization message
 
-Reference: https://docs.aws.amazon.com/cli/latest/reference/sts/decode-authorization-message.html
+Reference Site: [Link](https://docs.aws.amazon.com/cli/latest/reference/sts/decode-authorization-message.html)

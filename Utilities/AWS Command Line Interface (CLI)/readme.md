@@ -6,7 +6,7 @@ sort: 1
 Interact with AWS Proprietary Services (S3, Dynamo DB, etc..) using:
 
 1) CLI on Local Computer\
-setup: https://docs.aws.amazon.com/cli/latest/userguide/install-cliv2.html\
+Setup Reference: [Link](https://docs.aws.amazon.com/cli/latest/userguide/install-cliv2.html)\
 2) CLI on EC2 Machines\
 Already Available for use\
 3) AWS SDK on Local Computer\
@@ -34,6 +34,8 @@ To configure AWS CLI to connect to your account, in your CLI:
 3) Verify configuration with ls ~/.aws, you should see "config" and "credentials"
 
 ## AWS CLI Commands Reference
+AWS documentaries for CLI Commands
+
 Reference Site: [Link](https://docs.aws.amazon.com/cli/latest/index.html)
 
 #### Dry Run

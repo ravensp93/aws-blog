@@ -30,7 +30,7 @@ JSON:
 
 ### Allow EC2 Instances to access ENI resources
 
-For allowing ec2 to release,association and describing ENIs.\
+To allow ec2 host for releasing,associating and describing ENIs.\
 Use Case: During Auto-Scaling, scripts can be run for the new ec2 host to take over an elastic IP. This policy will provide the permissions for it
 
 Service Type: ec2

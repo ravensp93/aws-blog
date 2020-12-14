@@ -17,7 +17,7 @@ Give permission through assigning IAM Roles to EC2 Instances instead of configur
 
 ## AWS CLI Configuration (CLI on local computer)
 
-Configure CLI to access your AWS account through the web.
+Configure CLI using Access Key to access your AWS account through the web. By using Access key, the user's permission are delegated to your CLI.
 
 <p align=center>
   <img src="blob/aws-cli-pic1.PNG">

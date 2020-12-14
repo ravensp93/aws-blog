@@ -33,9 +33,9 @@ JSON:
 }
 ```
 
-### Allow EC2 Instances to Access ENI resources
+### Allow EC2 machine to Access ENI resources
 
-To allow ec2 host for releasing,associating and describing ENIs.\
+To allow ec2 machine for releasing,associating and describing ENIs.\
 Use Case: During Auto-Scaling, scripts can be run for the new ec2 host to take over an elastic IP. This policy will provide the permissions for it
 
 Service Type: ec2
@@ -55,6 +55,27 @@ JSON:
                 "ec2:AssociateAddress",
                 "ec2:AllocateAddress"
             ],
+            "Resource": "*"
+        }
+    ]
+}
+```
+
+### Allow EC2 machine to decode authorization message 
+
+To allow ec2 machine to decode authorization messages using aws cli
+
+Service Type: ec2
+
+JSON
+```
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Sid": "VisualEditor0",
+            "Effect": "Allow",
+            "Action": "sts:DecodeAuthorizationMessage",
             "Resource": "*"
         }
     ]

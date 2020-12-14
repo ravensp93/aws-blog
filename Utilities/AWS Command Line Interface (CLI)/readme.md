@@ -38,3 +38,9 @@ Reference Site: https://docs.aws.amazon.com/cli/latest/index.html
 
 #### Dry Run
 Specify --dry-run in your command if you wish to test out a command without it really executing
+
+#### Decode Authorization Messages
+
+For determining what is preventing access, you can decode the authorization message
+
+Reference: https://docs.aws.amazon.com/cli/latest/reference/sts/decode-authorization-message.html

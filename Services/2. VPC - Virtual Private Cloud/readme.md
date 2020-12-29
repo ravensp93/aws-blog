@@ -49,3 +49,15 @@ Configurations of the Default VPC includes:
 - Internet connectivity.
 - Public IP for all instances.
 - Public and private DNS name for all instances.
+
+## Subnets
+
+Subnets are tied to Availability Zones. Subnets can be either public or private. Usually public subnets are smaller than private subnets, because all applications reside in private subnets while application load balancers resides in public subnets.
+
+**Note**: AWS reserves 5 IP addresses in each subnet:
+
+- 10.0.0.0: Network address
+- 10.0.0.1: VPC Router
+- 10.0.0.2: Mapping to AWS DNS
+- 10.0.0.3: Reserved for future use
+- 10.0.0.255: Network broadcast address, reserved as AWS does not allow broadcast in VPC

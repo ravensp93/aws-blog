@@ -9,6 +9,7 @@ sort: 2
 1. [CIDR - Classless Inter-Domain Routing](#cidr)
 2. [Default VPC](#default-vpc)
 3. [Subnets](#subnets)
+4. [Internet Gateways and Route Tables](#gw-route-tables)
 
 ## CIDR - Classless Inter-Domain Routing <a name="cidr"></a>
 
@@ -55,10 +56,21 @@ Configurations of the Default VPC includes:
 
 Subnets are tied to Availability Zones. Subnets can be either public or private. Usually public subnets are smaller than private subnets, because all applications reside in private subnets while application load balancers resides in public subnets.
 
-**Note**: AWS reserves 5 IP addresses in each subnet:
+**Note**: AWS **reserves 5 IP addresses** in each subnet:
 
 - 10.0.0.0: Network address
 - 10.0.0.1: VPC Router
 - 10.0.0.2: Mapping to AWS DNS
 - 10.0.0.3: Reserved for future use
 - 10.0.0.255: Network broadcast address, reserved as AWS does not allow broadcast in VPC
+
+## Internet Gateways and Route Tables <a name="igw-route-tables"></a>
+
+Internet gateways help VPC instances connect with the internet, but require route tables to be edited. **Each VPC can only have one internet gateway attached.**
+
+To connect resources in a VPC subnet to internet:
+
+1. Create an internet gateway.
+2. Create a route table and attach to VPC.
+3. Associate route table with the VPC subnets.
+4. Add a route with Destination: 0.0.0.0/0 and target:\<created internet gateway> in route table.

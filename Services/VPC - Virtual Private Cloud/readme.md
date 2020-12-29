@@ -8,6 +8,7 @@ sort: 2
 
 1. [CIDR - Classless Inter-Domain Routing](#cidr)
 2. [Default VPC](#default-vpc)
+3. [Subnets](#subnets)
 
 ## CIDR - Classless Inter-Domain Routing <a name="cidr"></a>
 
@@ -50,7 +51,7 @@ Configurations of the Default VPC includes:
 - Public IP for all instances.
 - Public and private DNS name for all instances.
 
-## Subnets
+## Subnets <a name="subnets"></a>
 
 Subnets are tied to Availability Zones. Subnets can be either public or private. Usually public subnets are smaller than private subnets, because all applications reside in private subnets while application load balancers resides in public subnets.
 

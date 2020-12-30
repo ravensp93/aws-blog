@@ -10,6 +10,7 @@ sort: 2
 2. [Default VPC](#default-vpc)
 3. [Subnets](#subnets)
 4. [Internet Gateways and Route Tables](#gw-route-tables)
+5. [Network Address Translation (NAT)](#nat)
 
 ## CIDR - Classless Inter-Domain Routing <a name="cidr"></a>
 
@@ -66,7 +67,7 @@ Subnets are tied to Availability Zones. Subnets can be either public or private.
 
 ## Internet Gateways and Route Tables <a name="igw-route-tables"></a>
 
-Internet gateways help VPC instances connect with the internet, but require route tables to be edited. **Each VPC can only have one internet gateway attached.**
+Internet Gateways help VPC instances connect with the internet, but require route tables to be edited. **Each VPC can only have one internet gateway attached.**
 
 To connect resources in a VPC subnet to internet:
 
@@ -74,3 +75,29 @@ To connect resources in a VPC subnet to internet:
 2. Create a route table and attach to VPC.
 3. Associate route table with the VPC subnets.
 4. Add a route with Destination: 0.0.0.0/0 and target:\<created internet gateway> in route table.
+
+## Network Address Translation (NAT) <a name="nat"></a>
+
+While Internet Gateways allow instances in the public subnet to connect to the internet, they also cause our instances to be accessible from the internet.
+
+**For instances in the private subnet, we do not want them to be accessible from the internet, but we want them to access the internet** (to download software etc). This is what NAT is for.
+
+### Using NAT Instance
+
+The old way of NAT for private subnet is using NAT EC2 Instances. To do so, we must:
+
+1. Launch an Amazon Linux AMI with NAT pre-configured in public subnet.
+2. Set security groups inbound rules with allow HTTP/HTTPS from private subnets and allow SSH from our own desktop.
+3. Set security groups outbound rules to allow HTTP/HTTPS to internet.
+4. Turn off source/destination check on NAT Instance.
+5. In VPC console, create a route with target as NAT Instance and Destination as 0.0.0.0, making any public destination traffic route to NAT Instance's ENI.
+
+### Using NAT Gateway
+
+This is the proper way to set up NAT is the route to a NAT Gateway in the public subnet.
+
+NAT Gateway is resilient in a single AZ. Multiple NAT Gateways must be created one in each AZ for multi-AZ availability.
+
+1. Create a NAT Gateway in the public subnet via the VPC console.
+2. Attach an Elastic IP to the NAT Gateway.
+3. Add a route in the route table of the private subnet for destination 0.0.0.0 to target the NAT Gateway.

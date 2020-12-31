@@ -11,6 +11,8 @@ sort: 2
 3. [Subnets](#subnets)
 4. [Internet Gateways and Route Tables](#gw-route-tables)
 5. [Network Address Translation (NAT)](#nat)
+6. [Route 53 Private Zones](#private-zones)
+7. [Network Access Contrl List (ACL)](#network-acl)
 
 ## CIDR - Classless Inter-Domain Routing <a name="cidr"></a>
 
@@ -101,3 +103,49 @@ NAT Gateway is resilient in a single AZ. Multiple NAT Gateways must be created o
 1. Create a NAT Gateway in the public subnet via the VPC console.
 2. Attach an Elastic IP to the NAT Gateway.
 3. Add a route in the route table of the private subnet for destination 0.0.0.0 to target the NAT Gateway.
+
+## Route 53 Private Zones <a name="private-zones"></a>
+
+With VPC DNS Resolution, we are able to create private zones:
+
+1. Set enableDnsSupport to true
+   - Helps decide if DNS resolution is supported for VPC.
+   - Default true during VPC creation.
+   - If true, all instances in VPC queries the AWS DNS server at 169.254.169.253
+2. Set enableDnsHostname to true
+   - If true, assigns public hostname to EC2 instance if it has a public IP.
+   - False by default for newly created VPC. True by default for Default VPC.
+3. Create a private zone in Route 53.
+
+For more information on creating Route 53 zones, refer to Route 53 section of this blog (coming soon).
+
+## Network Access Contrl List (ACL) <a name="network-acl"></a>
+
+**\[Exam tip]: Understand the difference between Network ACL and Security Groups.**
+
+Network ACL are like subneet level firewall:
+
+- Each subnet will only have one ACL, and new subnets are assigned Default ACL.
+- Newly created ACLs will deny everything.
+- ACLs are a great way of blocking a specific IP.
+- Rules are defined as follows:
+  - Rules have a number (1 - 32766), in which a lower number is a higher precedence.
+  - E.g if #100 is ALLOW \<IP> and #200 is DENY \<IP>, \<IP> is allowed because #100 takes precedence.
+  - Last rule is an asterisk (\*) that denies a request in case of no rule match.
+  - AWS recommends adding rules by increments of 100.
+
+### Incoming Requests
+
+Incoming requests will be evaluated by both ACL and Security Group during ingress. During egress, Security Group is stateful so it will not evaluate if inbound traffic was allowed. ACL will still evaluate egress traffic because it is stateless.
+
+<p align=center>
+  <img src="assets/Network ACL.jpg">
+</p>
+
+### Outgoing Requests
+
+For outgoing requests, both ACL and SG will evaluate the outbound traffic, but incoming traffic will only be evaluated by SG. This is just like above.
+
+<p align=center>
+  <img src="assets/Network ACL2.jpg">
+</p>

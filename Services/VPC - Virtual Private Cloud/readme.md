@@ -13,6 +13,7 @@ sort: 2
 5. [Network Address Translation (NAT)](#nat)
 6. [Route 53 Private Zones](#private-zones)
 7. [Network Access Contrl List (ACL)](#network-acl)
+8. [VPC Peering](#vpc-peering)
 
 ## CIDR - Classless Inter-Domain Routing <a name="cidr"></a>
 
@@ -150,7 +151,7 @@ For outgoing requests, both ACL and SG will evaluate the outbound traffic, but i
   <img src="assets/Network ACL2.jpg">
 </p>
 
-## VPC Peering
+## VPC Peering <a name="vpc-peering"></a>
 
 VPC peering is used to connect 2 VPCs privately using AWS network, making them behave as if they were in the same network. VPCs must have non-overlapping CIDR.
 

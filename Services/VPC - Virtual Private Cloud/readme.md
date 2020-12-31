@@ -149,3 +149,14 @@ For outgoing requests, both ACL and SG will evaluate the outbound traffic, but i
 <p align=center>
   <img src="assets/Network ACL2.jpg">
 </p>
+
+## VPC Peering
+
+VPC peering is used to connect 2 VPCs privately using AWS network, making them behave as if they were in the same network. VPCs must have non-overlapping CIDR.
+
+**\[Exam tips]:**
+
+1. VPC Peering is **not transitive**. VPC A peered VPC B and VPC C peered VPC B does not mean VPC A and C are connected.
+2. We must update route tables in each VPC's subnets to ensure instances can communicate. Destination to the other VPC's CIDR and target the VPC peering.
+3. VPC peering can work inter-region, cross account.
+4. We can reference a security group of a peered VPC.

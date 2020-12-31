@@ -15,6 +15,7 @@ sort: 2
 7. [Network Access Contrl List (ACL)](#network-acl)
 8. [VPC Peering](#vpc-peering)
 9. [VPC Endpoints](#vpc-endpoints)
+10. [Bastion Hosts](#bastion-hosts)
 
 ## CIDR - Classless Inter-Domain Routing <a name="cidr"></a>
 
@@ -168,5 +169,12 @@ VPC peering is used to connect 2 VPCs privately using AWS network, making them b
 VPC Endpoints are used for accessing AWS services (S3, DynamoDB, etc) without routing through the public internet.
 
 There are 2 kinds of VPC Endpoints:
+
 1. **Interface:** provisions an ENI (private IP address) as an entry point (must attach security group) for most AWS services.
 2. **Gateway:** provisions a target and must be used in a route table (for S3 and DynamoDB)
+
+## Bastion Hosts <a name="bastion-hosts"></a>
+
+Bastion Hosts are used to SSH into instances in the private subnet. Bastion Hosts are in the public subnet.
+
+**\[Exam tip]:** Ensure that Bastion Hosts have tight security group controls, allowing only certain IPs to SSH to it.

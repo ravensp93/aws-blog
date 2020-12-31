@@ -14,6 +14,7 @@ sort: 2
 6. [Route 53 Private Zones](#private-zones)
 7. [Network Access Contrl List (ACL)](#network-acl)
 8. [VPC Peering](#vpc-peering)
+9. [VPC Endpoints](#vpc-endpoints)
 
 ## CIDR - Classless Inter-Domain Routing <a name="cidr"></a>
 
@@ -161,3 +162,11 @@ VPC peering is used to connect 2 VPCs privately using AWS network, making them b
 2. We must update route tables in each VPC's subnets to ensure instances can communicate. Destination to the other VPC's CIDR and target the VPC peering.
 3. VPC peering can work inter-region, cross account.
 4. We can reference a security group of a peered VPC.
+
+## VPC Endpoints <a name="vpc-endpoints"></a>
+
+VPC Endpoints are used for accessing AWS services (S3, DynamoDB, etc) without routing through the public internet.
+
+There are 2 kinds of VPC Endpoints:
+1. **Interface:** provisions an ENI (private IP address) as an entry point (must attach security group) for most AWS services.
+2. **Gateway:** provisions a target and must be used in a route table (for S3 and DynamoDB)

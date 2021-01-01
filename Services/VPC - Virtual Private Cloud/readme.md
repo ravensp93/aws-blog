@@ -17,6 +17,8 @@ sort: 2
 9. [VPC Endpoints](#vpc-endpoints)
 10. [Bastion Hosts](#bastion-hosts)
 11. [Flow Logs](#flow-logs)
+12. [Site to Site VPN](#site-to-site-vpn)
+13. [Direct Connect](#direct-connect)
 
 ## CIDR - Classless Inter-Domain Routing <a name="cidr"></a>
 
@@ -212,3 +214,45 @@ Below are the default fields of flow logs:
 | log-status   | The logging status of the flow log: OK: Data is logging normally to the chosen destinations. NODATA: There was no network traffic to or from the network interface during the aggregation interval. SKIPDATA: Some flow log records were skipped during the aggregation interval. This may be because of an internal capacity constraint, or an internal error. |
 
 **\[Exam tip]:** Action field's ACCEPT or REJECT can be due to SG / Network ACL
+
+## Site to Site VPN <a name="site-to-site-vpn"></a>
+
+To set up a Site to Site VPN connection from on-premise datacentre to AWS, we need the following to be setup:
+
+1. VPN gateway (Attached to VPC)
+2. Site to Site VPN connection
+3. Customer gateway on premise
+
+Customer gateway is a software application or physical device on customer side of the VPN connection. We need a static, routable IP address for the customer gateway device. If gateway is behind a NAT, NAT-T must be configured and use public IP address of the NAT.
+
+## Direct Connect <a name="direct-connect"></a>
+
+Provides a dedicated private connection from customer network to VPC:
+
+- Dedicated connection must be setup between datacentre and AWS Direct Connect locations.
+- Need to setup a Virtual Private Gateway to VPC
+
+Direct connect can access public resources (S3) and private (EC2) on same connection.
+
+Use Cases:
+
+- Increase bandwidth throughput - working with large data sets at lower costs.
+- More consistent network experience - applications using real-time data feeds.
+- For hybrid environments.
+
+Direct connect gateway can connect to multiple VPCs, but it is not a VPC peering point.
+
+Connection types:
+
+1. Dedicated connections: 1Gbps and 10 Gbps capacity.
+
+   - Physical ethernet port dedicated to customer.
+
+2. Hosted connections: 50Mbps, 500Mbps, to 10Gbps
+
+   - Capacity can be added or removed on demand.
+   - 1, 2, 5, 10 Gbps available at select AWS Direct Connect Partners.
+
+There is a minimum lead time of 1 month to establish the connection.
+
+**Note:** Data in transit is not encrypted. The solution is to provide a VPN connection on top of Direct Connect.

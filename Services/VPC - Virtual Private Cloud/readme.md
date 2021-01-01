@@ -11,14 +11,15 @@ sort: 2
 3. [Subnets](#subnets)
 4. [Internet Gateways and Route Tables](#gw-route-tables)
 5. [Network Address Translation (NAT)](#nat)
-6. [Route 53 Private Zones](#private-zones)
-7. [Network Access Contrl List (ACL)](#network-acl)
-8. [VPC Peering](#vpc-peering)
-9. [VPC Endpoints](#vpc-endpoints)
-10. [Bastion Hosts](#bastion-hosts)
-11. [Flow Logs](#flow-logs)
-12. [Site to Site VPN](#site-to-site-vpn)
-13. [Direct Connect](#direct-connect)
+6. [Egress Only Internet Gateway](#egress-igw)
+7. [Route 53 Private Zones](#private-zones)
+8. [Network Access Contrl List (ACL)](#network-acl)
+9. [VPC Peering](#vpc-peering)
+10. [VPC Endpoints](#vpc-endpoints)
+11. [Bastion Hosts](#bastion-hosts)
+12. [Flow Logs](#flow-logs)
+13. [Site to Site VPN](#site-to-site-vpn)
+14. [Direct Connect](#direct-connect)
 
 ## CIDR - Classless Inter-Domain Routing <a name="cidr"></a>
 
@@ -109,6 +110,10 @@ NAT Gateway is resilient in a single AZ. Multiple NAT Gateways must be created o
 1. Create a NAT Gateway in the public subnet via the VPC console.
 2. Attach an Elastic IP to the NAT Gateway.
 3. Add a route in the route table of the private subnet for destination 0.0.0.0 to target the NAT Gateway.
+
+## Egress Only Internet Gateway <a name="egress-igw"></a>
+
+Egress only Internet Gateways are like NAT Gateways, but are used for instances with IPv6 addresses. Since all IPv6 are public addresses, all IPv6 instances are internet accessible. The solution is to use a Egress only Internet Gateway between IPv6 instances and the internet.
 
 ## Route 53 Private Zones <a name="private-zones"></a>
 

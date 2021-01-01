@@ -143,7 +143,7 @@ Network ACL are like subneet level firewall:
 Incoming requests will be evaluated by both ACL and Security Group during ingress. During egress, Security Group is stateful so it will not evaluate if inbound traffic was allowed. ACL will still evaluate egress traffic because it is stateless.
 
 <p align=center>
-  <img src="assets/Network ACL.jpg">
+  <img src="assets/network-acl.jpg">
 </p>
 
 ### Outgoing Requests
@@ -151,7 +151,7 @@ Incoming requests will be evaluated by both ACL and Security Group during ingres
 For outgoing requests, both ACL and SG will evaluate the outbound traffic, but incoming traffic will only be evaluated by SG. This is just like above.
 
 <p align=center>
-  <img src="assets/Network ACL2.jpg">
+  <img src="assets/network-acl2.jpg">
 </p>
 
 **\[Hands-on tip]:** Don't forget to set outbound rules for SG on EC2 instances. The next section in VPC peering requires SG outbound to be set properly.

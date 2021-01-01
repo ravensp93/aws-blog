@@ -16,6 +16,7 @@ sort: 2
 8. [VPC Peering](#vpc-peering)
 9. [VPC Endpoints](#vpc-endpoints)
 10. [Bastion Hosts](#bastion-hosts)
+11. [Flow Logs](#flow-logs)
 
 ## CIDR - Classless Inter-Domain Routing <a name="cidr"></a>
 
@@ -153,6 +154,8 @@ For outgoing requests, both ACL and SG will evaluate the outbound traffic, but i
   <img src="assets/Network ACL2.jpg">
 </p>
 
+**\[Hands-on tip]:** Don't forget to set outbound rules for SG on EC2 instances. The next section in VPC peering requires SG outbound to be set properly.
+
 ## VPC Peering <a name="vpc-peering"></a>
 
 VPC peering is used to connect 2 VPCs privately using AWS network, making them behave as if they were in the same network. VPCs must have non-overlapping CIDR.
@@ -178,3 +181,34 @@ There are 2 kinds of VPC Endpoints:
 Bastion Hosts are used to SSH into instances in the private subnet. Bastion Hosts are in the public subnet.
 
 **\[Exam tip]:** Ensure that Bastion Hosts have tight security group controls, allowing only certain IPs to SSH to it.
+
+## Flow Logs <a name="flow-logs"></a>
+
+There are 3 kinds of flow logs that capture information about IP traffic going into our interfaces:
+
+1. VPC flow logs
+2. Subnet flow logs
+3. ENI flow logs
+
+Data can go to S3 / CloudWatch. Flow logs can capture network information from AWS managed interfaces too, such as ELB, RDS, ElastiCache, Redshift, Workspaces.
+
+Below are the default fields of flow logs:
+
+| Fields       | Description                                                                                                                                                                                                                                                                                                                                                     |
+| ------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| version      | The VPC Flow Logs version. If you use the default format, the version is 2. If you use a custom format, the version is the highest version among the specified fields. For example, if you only specify fields from version 2, the version is 2. If you specify a mixture of fields from versions 2, 3, and 4, the version is 4.                                |
+| account-id   | The AWS account ID of the owner of the source network interface for which traffic is recorded. If the network interface is created by an AWS service, for example when creating a VPC endpoint or Network Load Balancer, the record may display unknown for this field.                                                                                         |
+| interface-id | The ID of the network interface for which the traffic is recorded.                                                                                                                                                                                                                                                                                              |
+| srcaddr      | The source address for incoming traffic, or the IPv4 or IPv6 address of the network interface for outgoing traffic on the network interface. The IPv4 address of the network interface is always its private IPv4 address. See also pkt-srcaddr.                                                                                                                |
+| dstaddr      | The destination address for outgoing traffic, or the IPv4 or IPv6 address of the network interface for incoming traffic on the network interface. The IPv4 address of the network interface is always its private IPv4 address. See also pkt-dstaddr.                                                                                                           |
+| srcport      | The source port of the traffic.                                                                                                                                                                                                                                                                                                                                 |
+| dstport      | The destination port of the traffic.                                                                                                                                                                                                                                                                                                                            |
+| protocol     | The IANA protocol number of the traffic. For more information, see Assigned Internet Protocol Numbers                                                                                                                                                                                                                                                           |
+| packets      | The number of packets transferred during the flow.                                                                                                                                                                                                                                                                                                              |
+| bytes        | The number of bytes transferred during the flow.                                                                                                                                                                                                                                                                                                                |
+| start        | The time, in Unix seconds, when the first packet of the flow was received within the aggregation interval. This might be up to 60 seconds after the packet was transmitted or received on the network interface.                                                                                                                                                |
+| end          | The time, in Unix seconds, when the last packet of the flow was received within the aggregation interval. This might be up to 60 seconds after the packet was transmitted or received on the network interface.                                                                                                                                                 |
+| action       | The action that is associated with the traffic: ACCEPT: The recorded traffic was permitted by the security groups and network ACLs. REJECT: The recorded traffic was not permitted by the security groups or network ACLs.                                                                                                                                      |
+| log-status   | The logging status of the flow log: OK: Data is logging normally to the chosen destinations. NODATA: There was no network traffic to or from the network interface during the aggregation interval. SKIPDATA: Some flow log records were skipped during the aggregation interval. This may be because of an internal capacity constraint, or an internal error. |
+
+**\[Exam tip]:** Action field's ACCEPT or REJECT can be due to SG / Network ACL

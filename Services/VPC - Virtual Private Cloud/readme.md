@@ -14,12 +14,13 @@ sort: 2
 6. [Egress Only Internet Gateway](#egress-igw)
 7. [Route 53 Private Zones](#private-zones)
 8. [Network Access Contrl List (ACL)](#network-acl)
-9. [VPC Peering](#vpc-peering)
+9. [VPC Peering](#vpc-peering)s
 10. [VPC Endpoints](#vpc-endpoints)
 11. [Bastion Hosts](#bastion-hosts)
 12. [Flow Logs](#flow-logs)
 13. [Site to Site VPN](#site-to-site-vpn)
 14. [Direct Connect](#direct-connect)
+15. [Transit Gateways](#transit-gateways)
 
 ## CIDR - Classless Inter-Domain Routing <a name="cidr"></a>
 
@@ -53,6 +54,8 @@ Private IP can only be allowed the following ranges as established by Internet A
 - 10.0.0.0/8 - for big networks with 2^24 IP
 - 172.16.0.0 - 172.31.255.255 (172.16.0.0/12) - default AWS private addressing
 - 192.168.0.0/16 - for home networks
+
+**Note:** Max CIDR size in AWS is /16, so we cannot assign more than that.
 
 ## Default VPC <a name="default-vpc"></a>
 
@@ -261,3 +264,9 @@ Connection types:
 There is a minimum lead time of 1 month to establish the connection.
 
 **Note:** Data in transit is not encrypted. The solution is to provide a VPN connection on top of Direct Connect.
+
+## Transit Gateway <a name="transit-gateway></a>
+
+Transit Gateway is a peering service between thousands of VPC and Direct Connect and VPN connections to provide a hub-and-spoke connection between them. This is a regional resource, but can work cross-region and cross-account (using Resource Access Manager).
+
+This simplifies the network topology and provides IP multicast.
